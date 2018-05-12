@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pokemon.h"
+#include "Pokemon.h"
 
 class Battle
 {

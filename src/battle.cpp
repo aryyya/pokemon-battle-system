@@ -1,7 +1,7 @@
-#include "battle.h"
-#include "pokemon.h"
-#include "type.h"
-#include "utility.h"
+#include "Battle.h"
+#include "Pokemon.h"
+#include "Type.h"
+#include "Utility.h"
 #include <iostream>
 
 Battle::Battle(Pokemon& Pokemon1, Pokemon& Pokemon2)

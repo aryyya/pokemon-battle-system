@@ -1,4 +1,4 @@
-#include "utility.h"
+#include "Utility.h"
 #include <cstdlib>
 
 int GetRandomInt(const int min, const int max)

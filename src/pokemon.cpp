@@ -1,5 +1,5 @@
-#include "pokemon.h"
-#include "type.h"
+#include "Pokemon.h"
+#include "Type.h"
 #include <string>
 #include <iostream>
 

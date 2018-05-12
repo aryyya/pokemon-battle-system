@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "type.h"
+#include "Type.h"
 
 class Pokemon
 {

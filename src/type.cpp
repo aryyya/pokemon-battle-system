@@ -1,4 +1,4 @@
-#include "type.h"
+#include "Type.h"
 #include <string>
 
 Type::Type()

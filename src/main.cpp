@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "pokemon.h"
-#include "type.h"
-#include "battle.h"
+#include "Pokemon.h"
+#include "Type.h"
+#include "Battle.h"
 
 int main()
 {
