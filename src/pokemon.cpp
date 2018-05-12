@@ -1,7 +1,8 @@
-#include "Pokemon.h"
-#include "Type.h"
 #include <string>
 #include <iostream>
+
+#include "Pokemon.h"
+#include "Type.h"
 
 Pokemon::Pokemon(const std::string Name, const Type Type_, const int Health, const int Attack,
     const int Defence, const int SpecialAttack, const int SpecialDefence, const int Speed)

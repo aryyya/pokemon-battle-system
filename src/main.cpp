@@ -1,13 +1,21 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+
+#include "Battle.h"
+#include "Pokedex.h"
 #include "Pokemon.h"
 #include "Type.h"
-#include "Battle.h"
 
 int main()
 {
     std::srand(std::time(0));
+
+    Pokedex Pokedex("Pokedex.json");
+
+    std::cout << Pokedex.Get("Litten").ToString() << "\n";
+
+    /*
 
     Pokemon Pokemon1(
         "Charmander", // Name
@@ -45,4 +53,6 @@ int main()
     {
         Battle.Round();
     }
+
+    */
 }

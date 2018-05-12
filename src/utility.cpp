@@ -1,5 +1,6 @@
-#include "Utility.h"
 #include <cstdlib>
+
+#include "Utility.h"
 
 int GetRandomInt(const int min, const int max)
 {

@@ -1,5 +1,6 @@
-#include "Type.h"
 #include <string>
+
+#include "Type.h"
 
 Type::Type()
 {
