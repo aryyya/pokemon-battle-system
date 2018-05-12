@@ -1,14 +1,15 @@
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include "Pokemon.h"
 #include "Type.h"
 
-Pokemon::Pokemon(const std::string Name, const Type Type_, const int Health, const int Attack,
+Pokemon::Pokemon(const std::string Name, const std::vector<Type> Types, const int Health, const int Attack,
     const int Defence, const int SpecialAttack, const int SpecialDefence, const int Speed)
 {
     this->Name           = Name;
-    this->Type_          = Type_;
+    this->Types          = Types;
     this->Health         = Health;
     this->Attack         = Attack;
     this->Defence        = Defence;
@@ -22,7 +23,7 @@ std::string Pokemon::ToString() const
     return
         "{ "
         "Name: "           + Name                           + ", "
-        "Type: "           + Type_.ToString()               + ", "
+        "Types: "          + GetTypesString()               + ", "
         "Health: "         + std::to_string(Health)         + ", "
         "Attack: "         + std::to_string(Attack)         + ", "
         "Defence: "        + std::to_string(Defence)        + ", "
@@ -37,9 +38,24 @@ std::string Pokemon::GetName() const
     return Name;
 }
 
-Type Pokemon::GetType() const
+const std::vector<Type>& Pokemon::GetTypes() const
 {
-    return Type_;
+    return Types;
+}
+
+const std::string Pokemon::GetTypesString() const
+{
+    std::string TypesString;
+
+    for (unsigned int i = 0; i < Types.size(); i++)
+    {
+        TypesString += Types[i].ToString();
+        if (i < Types.size() - 1)
+        {
+            TypesString += ", ";
+        }
+    }
+    return TypesString;
 }
 
 int Pokemon::GetAttack() const

@@ -46,7 +46,7 @@ void Battle::Attack(Pokemon& Attacker, Pokemon& Defender)
 {    
     std::cout << Attacker.GetName() << " attacks " << Defender.GetName() << "\n";
 
-    const float AttackModifier = Attacker.GetType().GetModifier(Defender.GetType());
+    const float AttackModifier = Attacker.GetTypes()[0].GetModifier(Defender.GetTypes()[0]);
 
     std::cout << Attacker.GetName() << " has a " << AttackModifier << "x attack modifier against " << Defender.GetName() << "\n";
 

@@ -12,6 +12,11 @@ Type::Type(Types Type)
     this->Type_ = Type;
 }
 
+Type::Type(std::string Type)
+{
+    this->Type_ = ToType(Type);
+}
+
 std::string Type::ToString() const
 {
     switch (Type_)
@@ -20,7 +25,18 @@ std::string Type::ToString() const
         case Types::Fire:   return "Fire";
         case Types::Water:  return "Water";
         case Types::Grass:  return "Grass";
+        case Types::Flying: return "Flying";
     }
+}
+
+Type::Types Type::ToType(const std::string Type) const
+{
+    if (Type == "Normal") return Types::Normal;
+    if (Type == "Fire")   return Types::Fire;
+    if (Type == "Water")  return Types::Water;
+    if (Type == "Grass")  return Types::Grass;
+    if (Type == "Flying") return Types::Flying;
+    return Types::Normal;
 }
 
 float Type::GetModifier(const Type& Defender) const

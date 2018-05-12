@@ -10,11 +10,13 @@ public:
         Normal,
         Fire,
         Water,
-        Grass
+        Grass,
+        Flying
     };
 
     Type();
     Type(const Types Type);
+    Type(const std::string Type);
 
     std::string ToString() const;
 
@@ -22,4 +24,6 @@ public:
 
 private:
     Types Type_;
+
+    Types ToType(const std::string Type) const;
 };

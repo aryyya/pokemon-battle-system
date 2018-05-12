@@ -1,20 +1,23 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "Type.h"
 
 class Pokemon
 {
 public:
-    Pokemon(const std::string Name, const Type Type, const int Health, const int Attack,
+    Pokemon(const std::string Name, const std::vector<Type> Types, const int Health, const int Attack,
         const int Defence, const int SpecialAttack, const int SpecialDefence, const int Speed);
         
     std::string ToString() const;
 
     std::string GetName() const;
 
-    Type GetType() const;
+    const std::vector<Type>& GetTypes() const;
+
+    const std::string GetTypesString() const;
 
     int GetAttack() const;
 
@@ -30,7 +33,7 @@ public:
 
 private:
     std::string Name;
-    Type Type_;
+    std::vector<Type> Types;
     int Health;
     int Attack;
     int Defence;

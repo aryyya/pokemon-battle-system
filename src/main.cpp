@@ -13,7 +13,9 @@ int main()
 
     Pokedex Pokedex("Pokedex.json");
 
+    std::cout << Pokedex.Get("Rowlet").ToString() << "\n";
     std::cout << Pokedex.Get("Litten").ToString() << "\n";
+    std::cout << Pokedex.Get("Popplio").ToString() << "\n";
 
     /*
 
