@@ -1,3 +1,4 @@
 PokemonBattleSystem
 .DS_Store
 .vscode
+*.dSYM
