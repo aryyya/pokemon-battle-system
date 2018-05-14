@@ -1,5 +1,14 @@
+compiler=c++
+flags=-Wextra -Wall -std=c++17
+sources=src/*.cpp
+output=PokemonBattleSystem
+
 all:
-	c++ -Wextra -Wall -std=c++17 src/*.cpp -o PokemonBattleSystem
+	$(compiler) $(flags) $(sources) -o $(output)
 
 debug:
-	c++ -g -Wextra -Wall -std=c++17 src/*.cpp -o PokemonBattleSystem
+	$(compiler) $(flags) -g $(sources) -o $(output)
+
+.PHONY: clean
+clean:
+	rm -rf $(output) *.dSYM
