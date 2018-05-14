@@ -10,32 +10,14 @@
 
 #include <nlohmann/json.hpp>
 
-Type GetType(const std::string TypeString)
-{
-    return Type(TypeString);
-}
-
 Pokedex::Pokedex(const std::string path)
 {
     const std::string Data = LoadData(path);
-    nlohmann::json DataJson = nlohmann::json::parse(Data);
+    const nlohmann::json DataJson = nlohmann::json::parse(Data);
 
-    for (auto Entry : DataJson)
+    for (const nlohmann::json Entry : DataJson)
     {
-        auto TypeStrings = Entry["Types"];
-        std::vector<Type> Types;
-        Types.resize(TypeStrings.size());
-        std::transform(TypeStrings.begin(), TypeStrings.end(), Types.begin(), GetType);
-
-        Pokemon Pokemon_(
-            Entry["Name"],
-            Types,
-            Entry["Health Points"],
-            Entry["Attack"],
-            Entry["Defense"],
-            Entry["Special Attack"],
-            Entry["Special Defense"],
-            Entry["Speed"]);
+        Pokemon Pokemon_(Entry);
         PokemonDatabase.insert(std::pair<std::string, Pokemon>(Pokemon_.GetName(), Pokemon_));
     }
 }

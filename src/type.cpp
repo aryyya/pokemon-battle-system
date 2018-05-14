@@ -12,7 +12,7 @@ Type::Type(Types Type)
     this->Type_ = Type;
 }
 
-Type::Type(std::string Type)
+Type::Type(const std::string& Type)
 {
     this->Type_ = ToType(Type);
 }

@@ -16,7 +16,7 @@ public:
 
     Type();
     Type(const Types Type);
-    Type(const std::string Type);
+    Type(const std::string& Type);
 
     std::string ToString() const;
 

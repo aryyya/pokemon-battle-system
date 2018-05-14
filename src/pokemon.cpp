@@ -5,17 +5,40 @@
 #include "Pokemon.h"
 #include "Type.h"
 
-Pokemon::Pokemon(const std::string Name, const std::vector<Type> Types, const int Health, const int Attack,
-    const int Defence, const int SpecialAttack, const int SpecialDefence, const int Speed)
+#include <nlohmann/json.hpp>
+
+Pokemon::Pokemon(
+    const std::string Name,
+    const std::vector<Type> Types,
+    const int Health,
+    const int Attack,
+    const int Defense,
+    const int SpecialAttack,
+    const int SpecialDefense,
+    const int Speed)
 {
     this->Name           = Name;
     this->Types          = Types;
     this->Health         = Health;
+    this->Level          = 1;
     this->Attack         = Attack;
-    this->Defence        = Defence;
+    this->Defense        = Defense;
     this->SpecialAttack  = SpecialAttack;
-    this->SpecialDefence = SpecialDefence;
+    this->SpecialDefense = SpecialDefense;
     this->Speed          = Speed;
+}
+
+Pokemon::Pokemon(const nlohmann::json& Config)
+{
+    this->Name           = Config["Name"];
+    this->Types          = GetTypesFromStrings(Config["Types"]);
+    this->Health         = Config["Health Points"];
+    this->Level          = 1;
+    this->Attack         = Config["Attack"];
+    this->Defense        = Config["Defense"];
+    this->SpecialDefense = Config["Special Defense"];
+    this->SpecialAttack  = Config["Special Attack"];
+    this->Speed          = Config["Speed"];
 }
 
 std::string Pokemon::ToString() const
@@ -26,11 +49,23 @@ std::string Pokemon::ToString() const
         "Types: "          + GetTypesString()               + ", "
         "Health: "         + std::to_string(Health)         + ", "
         "Attack: "         + std::to_string(Attack)         + ", "
-        "Defence: "        + std::to_string(Defence)        + ", "
+        "Defense: "        + std::to_string(Defense)        + ", "
         "SpecialAttack: "  + std::to_string(SpecialAttack)  + ", "
-        "SpecialDefence: " + std::to_string(SpecialDefence) + ", "
+        "SpecialDefense: " + std::to_string(SpecialDefense) + ", "
         "Speed: "          + std::to_string(Speed)          + ""
         " }";
+}
+
+std::vector<Type> Pokemon::GetTypesFromStrings(const std::vector<std::string>& Strings)
+{
+    std::vector<Type> Types;
+
+    for (const std::string& String : Strings)
+    {
+        Types.push_back(Type(String));
+    }
+
+    return Types;
 }
 
 std::string Pokemon::GetName() const

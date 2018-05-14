@@ -5,11 +5,22 @@
 
 #include "Type.h"
 
+#include <nlohmann/json.hpp>
+
 class Pokemon
 {
 public:
-    Pokemon(const std::string Name, const std::vector<Type> Types, const int Health, const int Attack,
-        const int Defence, const int SpecialAttack, const int SpecialDefence, const int Speed);
+    Pokemon(
+        const std::string Name,
+        const std::vector<Type> Types,
+        const int Health,
+        const int Attack,
+        const int Defense,
+        const int SpecialAttack,
+        const int SpecialDefense,
+        const int Speed);
+
+    Pokemon(const nlohmann::json& Config);
         
     std::string ToString() const;
 
@@ -35,9 +46,12 @@ private:
     std::string Name;
     std::vector<Type> Types;
     int Health;
+    int Level;
     int Attack;
-    int Defence;
+    int Defense;
     int SpecialAttack;
-    int SpecialDefence;
+    int SpecialDefense;
     int Speed;
+
+    std::vector<Type> GetTypesFromStrings(const std::vector<std::string>& Strings);
 };
