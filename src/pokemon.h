@@ -21,6 +21,9 @@ private:
     int SpecialAttack;
     int SpecialDefense;
     int Speed;
+    float Individual;
+    float Effort;
+    float Nature;
 
     // CONSTRUCTORS:
 
@@ -86,4 +89,8 @@ public:
 
 private:
     std::vector<Type> GetTypesFromStrings(const std::vector<std::string>& Strings);
+
+    int GetLevelAdjustedHealthStat(const int HealthBaseStat) const;
+
+    int GetLevelAdjustedStat(const int BaseStat) const;
 };

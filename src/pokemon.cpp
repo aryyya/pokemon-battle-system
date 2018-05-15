@@ -1,5 +1,6 @@
-#include <string>
+#include <cmath>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "Pokemon.h"
@@ -61,6 +62,11 @@ void Pokemon::Initialize(
     this->SpecialAttack = SpecialAttack;
     this->SpecialDefense = SpecialDefense;
     this->Speed = Speed;
+
+    this->Individual = 0.0f;
+    this->Effort = 0.0f;
+    this->Nature = 0.9f;
+
     this->Level = 1;
 }
 
@@ -85,7 +91,7 @@ const std::string Pokemon::GetTypesString() const
         TypesString += Types[i].ToString();
         if (i < Types.size() - 1)
         {
-            TypesString += ", ";
+            TypesString += "/";
         }
     }
     return TypesString;
@@ -93,7 +99,7 @@ const std::string Pokemon::GetTypesString() const
 
 int Pokemon::GetHealth() const
 {
-    return 2 * Health * Level / 100 + Level + 10;
+    return GetLevelAdjustedHealthStat(Health);
 }
 
 int Pokemon::GetLevel() const
@@ -108,26 +114,26 @@ void Pokemon::SetLevel(const int Level)
 
 int Pokemon::GetAttack() const
 {
-    return Attack;
+    return GetLevelAdjustedStat(Attack);
 }
 
 int Pokemon::GetDefense() const {
-    return Defense;
+    return GetLevelAdjustedStat(Defense);
 }
 
 int Pokemon::GetSpecialAttack() const
 {
-    return SpecialAttack;
+    return GetLevelAdjustedStat(SpecialAttack);
 }
 
 int Pokemon::GetSpecialDefense() const
 {
-    return SpecialDefense;
+    return GetLevelAdjustedStat(SpecialDefense);
 }
 
 int Pokemon::GetSpeed() const
 {
-    return Speed;
+    return GetLevelAdjustedStat(Speed);
 }
 
 // OTHERS:
@@ -135,16 +141,16 @@ int Pokemon::GetSpeed() const
 std::string Pokemon::ToString() const
 {
     return
-        "{ "
-        "Name: "           + Name                                + ", "
-        "Types: "          + GetTypesString()                    + ", "
-        "Health: "         + std::to_string(GetHealth())         + ", "
-        "Attack: "         + std::to_string(GetAttack())         + ", "
-        "Defense: "        + std::to_string(GetDefense())        + ", "
-        "SpecialAttack: "  + std::to_string(GetSpecialAttack())  + ", "
-        "SpecialDefense: " + std::to_string(GetSpecialDefense()) + ", "
-        "Speed: "          + std::to_string(GetSpeed())          + ""
-        " }";
+        "{\n"
+        "  Name: "           + Name                                + ",\n"
+        "  Types: "          + GetTypesString()                    + ",\n"
+        "  Health: "         + std::to_string(GetHealth())         + ",\n"
+        "  Attack: "         + std::to_string(GetAttack())         + ",\n"
+        "  Defense: "        + std::to_string(GetDefense())        + ",\n"
+        "  SpecialAttack: "  + std::to_string(GetSpecialAttack())  + ",\n"
+        "  SpecialDefense: " + std::to_string(GetSpecialDefense()) + ",\n"
+        "  Speed: "          + std::to_string(GetSpeed())          + "\n"
+        "}";
 }
 
 std::string Pokemon::GetStatus()
@@ -173,4 +179,14 @@ std::vector<Type> Pokemon::GetTypesFromStrings(const std::vector<std::string>& S
     }
 
     return Types;
+}
+
+int Pokemon::GetLevelAdjustedHealthStat(const int HealthBaseStat) const
+{
+    return (2 * HealthBaseStat + Individual + Effort) * Level / 100 + Level + 10;
+}
+
+int Pokemon::GetLevelAdjustedStat(const int BaseStat) const
+{
+    return floor((2 * BaseStat + Individual + Effort) * Level / 100 + 5) * Nature;
 }
