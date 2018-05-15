@@ -9,38 +9,7 @@
 
 class Pokemon
 {
-public:
-    Pokemon(
-        const std::string Name,
-        const std::vector<Type> Types,
-        const int Health,
-        const int Attack,
-        const int Defense,
-        const int SpecialAttack,
-        const int SpecialDefense,
-        const int Speed);
-
-    Pokemon(const nlohmann::json& Config);
-        
-    std::string ToString() const;
-
-    std::string GetName() const;
-
-    const std::vector<Type>& GetTypes() const;
-
-    const std::string GetTypesString() const;
-
-    int GetAttack() const;
-
-    int GetSpeed() const;
-
-    int GetHealth() const;
-
-    void TakeDamage(const int Damage);
-
-    bool IsAlive() const;
-
-    std::string GetStatus();
+    // PROPERTIES:
 
 private:
     std::string Name;
@@ -53,5 +22,64 @@ private:
     int SpecialDefense;
     int Speed;
 
+    // CONSTRUCTORS:
+
+public:
+    Pokemon(
+        const std::string Name,
+        const std::vector<Type> Types,
+        const int Health,
+        const int Attack,
+        const int Defense,
+        const int SpecialAttack,
+        const int SpecialDefense,
+        const int Speed);
+
+    Pokemon(const nlohmann::json& Config);
+
+private:
+    void Initialize(
+        const std::string Name,
+        const std::vector<Type> Types,
+        const int Health,
+        const int Attack,
+        const int Defense,
+        const int SpecialAttack,
+        const int SpecialDefense,
+        const int Speed);
+
+    // GETTERS AND SETTERS:
+    
+public:
+    std::string GetName() const;
+
+    const std::vector<Type>& GetTypes() const;
+
+    const std::string GetTypesString() const;
+
+    int GetHealth() const;
+
+    int GetAttack() const;
+
+    int GetDefense() const;
+
+    int GetSpecialAttack() const;
+
+    int GetSpecialDefense() const;
+    
+    int GetSpeed() const;
+
+    // OTHERS:
+
+public:
+    std::string ToString() const;
+
+    std::string GetStatus();
+
+    bool IsAlive() const;
+
+    void TakeDamage(const int Damage);
+
+private:
     std::vector<Type> GetTypesFromStrings(const std::vector<std::string>& Strings);
 };
