@@ -81,14 +81,14 @@ public:
 public:
     std::string ToString() const;
 
-    std::string GetStatus();
+    std::string GetStatus() const;
 
     bool IsAlive() const;
 
     void TakeDamage(const int Damage);
 
 private:
-    std::vector<Type> GetTypesFromStrings(const std::vector<std::string>& Strings);
+    std::vector<Type> GetTypesFromStrings(const std::vector<std::string>& Strings) const;
 
     int GetLevelAdjustedHealthStat(const int HealthBaseStat) const;
 

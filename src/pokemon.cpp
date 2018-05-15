@@ -85,7 +85,6 @@ const std::vector<Type>& Pokemon::GetTypes() const
 const std::string Pokemon::GetTypesString() const
 {
     std::string TypesString;
-
     for (unsigned int i = 0; i < Types.size(); i++)
     {
         TypesString += Types[i].ToString();
@@ -153,7 +152,7 @@ std::string Pokemon::ToString() const
         "}";
 }
 
-std::string Pokemon::GetStatus()
+std::string Pokemon::GetStatus() const
 {
     return Name + ": " + std::to_string(Health) + " Health (" + (IsAlive() ? "conscious" : "unconscious") + ")";
 }
@@ -169,15 +168,13 @@ void Pokemon::TakeDamage(const int Damage)
     Health -= Damage;
 }
 
-std::vector<Type> Pokemon::GetTypesFromStrings(const std::vector<std::string>& Strings)
+std::vector<Type> Pokemon::GetTypesFromStrings(const std::vector<std::string>& Strings) const
 {
     std::vector<Type> Types;
-
     for (const std::string& String : Strings)
     {
         Types.push_back(Type(String));
     }
-
     return Types;
 }
 
