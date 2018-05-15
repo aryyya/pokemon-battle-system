@@ -93,7 +93,17 @@ const std::string Pokemon::GetTypesString() const
 
 int Pokemon::GetHealth() const
 {
-    return Health;
+    return 2 * Health * Level / 100 + Level + 10;
+}
+
+int Pokemon::GetLevel() const
+{
+    return Level;
+}
+
+void Pokemon::SetLevel(const int Level)
+{
+    this->Level = Level;
 }
 
 int Pokemon::GetAttack() const
@@ -126,14 +136,14 @@ std::string Pokemon::ToString() const
 {
     return
         "{ "
-        "Name: "           + Name                           + ", "
-        "Types: "          + GetTypesString()               + ", "
-        "Health: "         + std::to_string(Health)         + ", "
-        "Attack: "         + std::to_string(Attack)         + ", "
-        "Defense: "        + std::to_string(Defense)        + ", "
-        "SpecialAttack: "  + std::to_string(SpecialAttack)  + ", "
-        "SpecialDefense: " + std::to_string(SpecialDefense) + ", "
-        "Speed: "          + std::to_string(Speed)          + ""
+        "Name: "           + Name                                + ", "
+        "Types: "          + GetTypesString()                    + ", "
+        "Health: "         + std::to_string(GetHealth())         + ", "
+        "Attack: "         + std::to_string(GetAttack())         + ", "
+        "Defense: "        + std::to_string(GetDefense())        + ", "
+        "SpecialAttack: "  + std::to_string(GetSpecialAttack())  + ", "
+        "SpecialDefense: " + std::to_string(GetSpecialDefense()) + ", "
+        "Speed: "          + std::to_string(GetSpeed())          + ""
         " }";
 }
 

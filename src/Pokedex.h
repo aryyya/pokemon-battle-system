@@ -8,12 +8,12 @@
 class Pokedex
 {
 public:
-    Pokedex(const std::string path);
+    Pokedex(const std::string& path);
 
-    Pokemon Get(const std::string PokemonName);
+    Pokemon Get(const std::string& PokemonName);
 
 private:
     std::map<std::string, Pokemon> PokemonDatabase;
 
-    std::string LoadData(const std::string path);
+    std::string LoadData(const std::string& path);
 };

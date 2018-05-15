@@ -59,6 +59,10 @@ public:
 
     int GetHealth() const;
 
+    int GetLevel() const;
+
+    void SetLevel(const int Level);
+
     int GetAttack() const;
 
     int GetDefense() const;
@@ -66,7 +70,7 @@ public:
     int GetSpecialAttack() const;
 
     int GetSpecialDefense() const;
-    
+
     int GetSpeed() const;
 
     // OTHERS:

@@ -10,7 +10,7 @@
 
 #include <nlohmann/json.hpp>
 
-Pokedex::Pokedex(const std::string path)
+Pokedex::Pokedex(const std::string& path)
 {
     const std::string Data = LoadData(path);
     const nlohmann::json DataJson = nlohmann::json::parse(Data);
@@ -22,12 +22,12 @@ Pokedex::Pokedex(const std::string path)
     }
 }
 
-Pokemon Pokedex::Get(const std::string PokemonName)
+Pokemon Pokedex::Get(const std::string& PokemonName)
 {
     return PokemonDatabase.at(PokemonName);
 }
 
-std::string Pokedex::LoadData(const std::string path)
+std::string Pokedex::LoadData(const std::string& path)
 {
     std::ifstream Stream(path);
     std::string Data{std::istreambuf_iterator<char>(Stream), std::istreambuf_iterator<char>()};
