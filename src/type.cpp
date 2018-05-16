@@ -2,6 +2,8 @@
 
 #include "Type.h"
 
+// CONSTRUCTORS:
+
 Type::Type()
 {
     this->Type_ = Normal;
@@ -17,6 +19,8 @@ Type::Type(const std::string& Type)
     this->Type_ = ToType(Type);
 }
 
+// OTHERS:
+
 std::string Type::ToString() const
 {
     switch (Type_)
@@ -27,16 +31,6 @@ std::string Type::ToString() const
         case Types::Grass:  return "Grass";
         case Types::Flying: return "Flying";
     }
-}
-
-Type::Types Type::ToType(const std::string Type) const
-{
-    if (Type == "Normal") return Types::Normal;
-    if (Type == "Fire")   return Types::Fire;
-    if (Type == "Water")  return Types::Water;
-    if (Type == "Grass")  return Types::Grass;
-    if (Type == "Flying") return Types::Flying;
-    return Types::Normal;
 }
 
 float Type::GetModifier(const Type& Defender) const
@@ -94,4 +88,14 @@ float Type::GetModifier(const Type& Defender) const
         }
     }
     return 1.0f;
+}
+
+Type::Types Type::ToType(const std::string Type) const
+{
+    if (Type == "Normal") return Types::Normal;
+    if (Type == "Fire")   return Types::Fire;
+    if (Type == "Water")  return Types::Water;
+    if (Type == "Grass")  return Types::Grass;
+    if (Type == "Flying") return Types::Flying;
+    return Types::Normal;
 }
