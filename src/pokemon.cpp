@@ -65,7 +65,6 @@ void Pokemon::Initialize(
 
     this->Individual = 0.0f;
     this->Effort = 0.0f;
-    this->Nature = 0.9f;
 
     this->Level = 1;
 }
@@ -113,26 +112,26 @@ void Pokemon::SetLevel(const int Level)
 
 int Pokemon::GetAttack() const
 {
-    return GetLevelAdjustedStat(Attack);
+    return GetLevelAdjustedStat(Stats::Attack, Attack);
 }
 
 int Pokemon::GetDefense() const {
-    return GetLevelAdjustedStat(Defense);
+    return GetLevelAdjustedStat(Stats::Defense, Defense);
 }
 
 int Pokemon::GetSpecialAttack() const
 {
-    return GetLevelAdjustedStat(SpecialAttack);
+    return GetLevelAdjustedStat(Stats::SpecialAttack, SpecialAttack);
 }
 
 int Pokemon::GetSpecialDefense() const
 {
-    return GetLevelAdjustedStat(SpecialDefense);
+    return GetLevelAdjustedStat(Stats::SpecialDefense, SpecialDefense);
 }
 
 int Pokemon::GetSpeed() const
 {
-    return GetLevelAdjustedStat(Speed);
+    return GetLevelAdjustedStat(Stats::Speed, Speed);
 }
 
 // OTHERS:
@@ -183,7 +182,9 @@ int Pokemon::GetLevelAdjustedHealthStat(const int HealthBaseStat) const
     return (2 * HealthBaseStat + Individual + Effort) * Level / 100 + Level + 10;
 }
 
-int Pokemon::GetLevelAdjustedStat(const int BaseStat) const
+int Pokemon::GetLevelAdjustedStat(const Stats& Stat, const int BaseStat) const
 {
-    return floor((2 * BaseStat + Individual + Effort) * Level / 100 + 5) * Nature;
+    const float NatureModifier = Nature.GetModifier(Stat);
+
+    return floor((2 * BaseStat + Individual + Effort) * Level / 100 + 5) * NatureModifier;
 }

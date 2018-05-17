@@ -13,7 +13,8 @@ public:
         Fire,
         Water,
         Grass,
-        Flying
+        Flying,
+        TypesLength
     };
 
     // PROPERTIES:

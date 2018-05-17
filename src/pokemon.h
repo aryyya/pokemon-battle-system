@@ -3,9 +3,20 @@
 #include <string>
 #include <vector>
 
+#include "Nature.h"
 #include "Type.h"
 
 #include <nlohmann/json.hpp>
+
+enum Stats
+{
+    Attack,
+    Defense,
+    SpecialAttack,
+    SpecialDefense,
+    Speed,
+    StatsLength
+};
 
 class Pokemon
 {
@@ -23,7 +34,7 @@ private:
     int Speed;
     float Individual;
     float Effort;
-    float Nature;
+    Nature Nature;
 
     // CONSTRUCTORS:
 
@@ -92,5 +103,5 @@ private:
 
     int GetLevelAdjustedHealthStat(const int HealthBaseStat) const;
 
-    int GetLevelAdjustedStat(const int BaseStat) const;
+    int GetLevelAdjustedStat(const Stats& Stat, const int BaseStat) const;
 };
