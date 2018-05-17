@@ -147,7 +147,8 @@ std::string Pokemon::ToString() const
         "  Defense: "        + std::to_string(GetDefense())        + ",\n"
         "  SpecialAttack: "  + std::to_string(GetSpecialAttack())  + ",\n"
         "  SpecialDefense: " + std::to_string(GetSpecialDefense()) + ",\n"
-        "  Speed: "          + std::to_string(GetSpeed())          + "\n"
+        "  Speed: "          + std::to_string(GetSpeed())          + ",\n"
+        "  Nature: "         + Nature.ToString()                   + "\n"
         "}";
 }
 

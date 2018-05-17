@@ -22,6 +22,8 @@ public:
     // OTHERS:
 
 public:
+    std::string ToString() const;
+
     float GetModifier(const Stats& Stat) const;
 
 private:

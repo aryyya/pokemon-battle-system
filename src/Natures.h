@@ -1,6 +1,6 @@
 #pragma once
 
-enum Natures
+enum class Natures
 {
     Adamant,
     Bashful,
@@ -27,5 +27,6 @@ enum Natures
     Sassy,
     Serious,
     Timid,
+    
     NaturesLength
 };

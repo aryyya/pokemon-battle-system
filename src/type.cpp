@@ -30,6 +30,10 @@ std::string Type::ToString() const
         case Types::Water:  return "Water";
         case Types::Grass:  return "Grass";
         case Types::Flying: return "Flying";
+
+        case Types::TypesLength:
+        default:
+            return "";
     }
 }
 
