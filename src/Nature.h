@@ -2,39 +2,9 @@
 
 #include <string>
 
+#include "Natures.h"
 #include "Pokemon.h"
-
-class Pokemon;
-
-enum Natures
-{
-    Adamant,
-    Bashful,
-    Bold,
-    Brave,
-    Calm,
-    Careful,
-    Docile,
-    Gentle,
-    Hardy,
-    Hasty,
-    Impish,
-    Jolly,
-    Lax,
-    Lonely,
-    Mild,
-    Modest,
-    Naive,
-    Naughty,
-    Quiet,
-    Quirky,
-    Rash,
-    Relaxed,
-    Sassy,
-    Serious,
-    Timid,
-    NaturesLength
-};
+#include "Stats.h"
 
 class Nature
 {
@@ -48,7 +18,7 @@ private:
 public:
     Nature();
 
-    Nature(const Natures Nature);
+    Nature(const Natures& Nature);
 
     // OTHERS:
 

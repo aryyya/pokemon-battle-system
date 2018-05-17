@@ -1,7 +1,9 @@
 #include <string>
 
 #include "Nature.h"
+#include "Natures.h"
 #include "Pokemon.h"
+#include "Stats.h"
 #include "Utility.h"
 
 // CONSTRUCTORS:
@@ -11,22 +13,22 @@ Nature::Nature()
     this->Nature_ = static_cast<Natures>(GetRandomInt(0, NaturesLength));
 }
 
-Nature::Nature(const Natures Nature)
+Nature::Nature(const Natures& Nature)
 {
     this->Nature_ = Nature;
 }
 
 // OTHERS:
 
-float Nature::GetModifier(const Pokemon::Stats& Stat) const
+float Nature::GetModifier(const Stats& Stat) const
 {
     switch (Stat)
     {
-        case Pokemon::Stats::Attack:         return GetAttackModifier();
-        case Pokemon::Stats::Defense:        return GetDefenseModifier();
-        case Pokemon::Stats::SpecialAttack:  return GetSpecialAttackModifier();
-        case Pokemon::Stats::SpecialDefense: return GetSpecialDefenseModifier();
-        case Pokemon::Stats::Speed:          return GetSpeedModifier();
+        case Stats::Attack:         return GetAttackModifier();
+        case Stats::Defense:        return GetDefenseModifier();
+        case Stats::SpecialAttack:  return GetSpecialAttackModifier();
+        case Stats::SpecialDefense: return GetSpecialDefenseModifier();
+        case Stats::Speed:          return GetSpeedModifier();
     }
     return 1.0f;
 }

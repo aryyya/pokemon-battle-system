@@ -4,19 +4,10 @@
 #include <vector>
 
 #include "Nature.h"
+#include "Stats.h"
 #include "Type.h"
 
 #include <nlohmann/json.hpp>
-
-enum Stats
-{
-    Attack,
-    Defense,
-    SpecialAttack,
-    SpecialDefense,
-    Speed,
-    StatsLength
-};
 
 class Pokemon
 {
