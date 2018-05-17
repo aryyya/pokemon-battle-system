@@ -3,7 +3,6 @@
 #include <string>
 
 #include "Natures.h"
-#include "Pokemon.h"
 #include "Stats.h"
 
 class Nature
