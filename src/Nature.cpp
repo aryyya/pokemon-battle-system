@@ -22,37 +22,7 @@ Nature::Nature(const Natures& Nature)
 
 std::string Nature::ToString() const
 {
-    switch (Nature_)
-    {
-        case Natures::Adamant:       return "Adamant";
-        case Natures::Bashful:       return "Bashful";
-        case Natures::Bold:          return "Bold";
-        case Natures::Brave:         return "Brave";
-        case Natures::Calm:          return "Calm";
-        case Natures::Careful:       return "Careful";
-        case Natures::Docile:        return "Docile";
-        case Natures::Gentle:        return "Gentle";
-        case Natures::Hardy:         return "Hardy";
-        case Natures::Hasty:         return "Hasty";
-        case Natures::Impish:        return "Impish";
-        case Natures::Jolly:         return "Jolly";
-        case Natures::Lax:           return "Lax";
-        case Natures::Lonely:        return "Lonely";
-        case Natures::Mild:          return "Mild";
-        case Natures::Modest:        return "Modest";
-        case Natures::Naive:         return "Naive";
-        case Natures::Naughty:       return "Naughty";
-        case Natures::Quiet:         return "Quiet";
-        case Natures::Quirky:        return "Quirky";
-        case Natures::Rash:          return "Rash";
-        case Natures::Relaxed:       return "Relaxed";
-        case Natures::Sassy:         return "Sassy";
-        case Natures::Serious:       return "Serious";
-        case Natures::Timid:         return "Timid";
-    
-        case Natures::NaturesLength:
-        default:                     return "";
-    }
+    return NaturesTranslations.at(Nature_);
 }
 
 float Nature::GetModifier(const Stats& Stat) const
@@ -72,25 +42,41 @@ float Nature::GetModifier(const Stats& Stat) const
 
 float Nature::GetAttackModifier() const
 {
-    return 1.0f;
+    return FindModifier(NaturesThatRaiseAttack, NaturesThatLowerAttack);
 }
 
 float Nature::GetDefenseModifier() const
 {
-    return 1.0f;
+    return FindModifier(NaturesThatRaiseDefense, NaturesThatLowerDefense);
 }
 
 float Nature::GetSpecialAttackModifier() const
 {
-    return 1.0f;
+    return FindModifier(NaturesThatRaiseSpecialAttack, NaturesThatLowerSpecialAttack);
 }
 
 float Nature::GetSpecialDefenseModifier() const
 {
-    return 1.0f;
+    return FindModifier(NaturesThatRaiseSpecialDefense, NaturesThatLowerSpecialDefense);
 }
 
 float Nature::GetSpeedModifier() const
 {
-    return 1.0f;
+    return FindModifier(NaturesThatRaiseSpeed, NaturesThatLowerSpeed);
+}
+
+float Nature::FindModifier(const std::vector<Natures>& NaturesThatRaiseStat, const std::vector<Natures>& NaturesThatLowerStat) const
+{
+    if (Exists(Nature_, NaturesThatRaiseStat))
+    {
+        return 1.1f;
+    }
+    else if (Exists(Nature_, NaturesThatLowerStat))
+    {
+        return 0.9f;
+    }
+    else
+    {
+        return 1.0f;
+    }
 }

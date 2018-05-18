@@ -36,4 +36,6 @@ private:
     float GetSpecialDefenseModifier() const;
 
     float GetSpeedModifier() const;
+
+    float FindModifier(const std::vector<Natures>& NaturesThatRaiseStat, const std::vector<Natures>& NaturesThatLowerStat) const;
 };
