@@ -1,7 +1,9 @@
 #pragma once
 
-#include <map>
+#include <unordered_map>
 #include <vector>
+
+#include "Utility.h"
 
 enum class Natures
 {
@@ -34,7 +36,7 @@ enum class Natures
     NaturesLength
 };
 
-const std::map<Natures, std::string> NaturesTranslations = {
+const std::unordered_map<Natures, std::string> NaturesNaturesToStringMap = {
     { Natures::Adamant, "Adamant" },
     { Natures::Bashful, "Bashful" },
     { Natures::Bold,    "Bold"    },
@@ -61,6 +63,8 @@ const std::map<Natures, std::string> NaturesTranslations = {
     { Natures::Serious, "Serious" },
     { Natures::Timid,   "Timid"   }
 };
+
+const std::unordered_map<std::string, Natures> NaturesStringToNaturesMap = GetFlipped(NaturesNaturesToStringMap);
 
 const std::vector<Natures> NaturesThatRaiseAttack = {
     Natures::Lonely,

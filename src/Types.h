@@ -1,7 +1,9 @@
 #pragma once
 
-#include <map>
 #include <string>
+#include <unordered_map>
+
+#include "Utility.h"
 
 enum class Types
 {
@@ -14,10 +16,12 @@ enum class Types
     TypesLength
 };
 
-const std::map<Types, std::string> TypesTranslations = {
+const std::unordered_map<Types, std::string> TypesTypesToStringMap = {
     { Types::Normal, "Normal" },
     { Types::Fire,   "Fire"   },
     { Types::Water,  "Water"  },
     { Types::Grass,  "Grass"  },
     { Types::Flying, "Flying" }
 };
+
+const std::unordered_map<std::string, Types> TypesStringToTypesMap = GetFlipped(TypesTypesToStringMap);

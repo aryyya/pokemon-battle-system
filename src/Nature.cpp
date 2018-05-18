@@ -22,7 +22,7 @@ Nature::Nature(const Natures& Nature)
 
 std::string Nature::ToString() const
 {
-    return NaturesTranslations.at(Nature_);
+    return NaturesNaturesToStringMap.at(Nature_);
 }
 
 float Nature::GetModifier(const Stats& Stat) const

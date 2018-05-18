@@ -22,11 +22,6 @@ Type::Type(const std::string& Type)
 
 // OTHERS:
 
-std::string Type::ToString() const
-{
-    return TypesTranslations.at(Type_);
-}
-
 float Type::GetModifier(const Type& Defender) const
 {
     if (Type_ == Types::Fire)
@@ -84,12 +79,12 @@ float Type::GetModifier(const Type& Defender) const
     return 1.0f;
 }
 
+std::string Type::ToString() const
+{
+    return TypesTypesToStringMap.at(Type_);
+}
+
 Types Type::ToType(const std::string Type) const
 {
-    if (Type == "Normal") return Types::Normal;
-    if (Type == "Fire")   return Types::Fire;
-    if (Type == "Water")  return Types::Water;
-    if (Type == "Grass")  return Types::Grass;
-    if (Type == "Flying") return Types::Flying;
-    return Types::Normal;
+    return TypesStringToTypesMap.at(Type);
 }
