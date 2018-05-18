@@ -2,21 +2,10 @@
 
 #include <string>
 
+#include "Types.h"
+
 class Type
 {
-    // TYPES:
-
-public:
-    enum Types
-    {
-        Normal,
-        Fire,
-        Water,
-        Grass,
-        Flying,
-        TypesLength
-    };
-
     // PROPERTIES:
 
 private:
@@ -27,7 +16,7 @@ private:
 public:
     Type();
 
-    Type(const Types Type);
+    Type(const Types& Type);
 
     Type(const std::string& Type);
 

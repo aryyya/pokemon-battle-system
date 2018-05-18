@@ -1,15 +1,16 @@
 #include <string>
 
 #include "Type.h"
+#include "Types.h"
 
 // CONSTRUCTORS:
 
 Type::Type()
 {
-    this->Type_ = Normal;
+    this->Type_ = Types::Normal;
 }
 
-Type::Type(Types Type)
+Type::Type(const Types& Type)
 {
     this->Type_ = Type;
 }
@@ -23,70 +24,59 @@ Type::Type(const std::string& Type)
 
 std::string Type::ToString() const
 {
-    switch (Type_)
-    {
-        case Types::Normal: return "Normal";
-        case Types::Fire:   return "Fire";
-        case Types::Water:  return "Water";
-        case Types::Grass:  return "Grass";
-        case Types::Flying: return "Flying";
-
-        case Types::TypesLength:
-        default:
-            return "";
-    }
+    return TypesTranslations.at(Type_);
 }
 
 float Type::GetModifier(const Type& Defender) const
 {
-    if (Type_ == Type::Fire)
+    if (Type_ == Types::Fire)
     {
-        if (Defender.Type_ == Type::Fire)
+        if (Defender.Type_ == Types::Fire)
         {
             return 0.5f;
         }
     }
-        if (Type_ == Type::Fire)
+        if (Type_ == Types::Fire)
     {
-        if (Defender.Type_ == Type::Fire)
+        if (Defender.Type_ == Types::Fire)
         {
             return 0.5f;
         }
-        if (Defender.Type_ == Type::Water)
+        if (Defender.Type_ == Types::Water)
         {
             return 0.5f;
         }
-        if (Defender.Type_ == Type::Grass)
+        if (Defender.Type_ == Types::Grass)
         {
             return 2.0f;
         }
     }
-    if (Type_ == Type::Water)
+    if (Type_ == Types::Water)
     {
-        if (Defender.Type_ == Type::Fire)
+        if (Defender.Type_ == Types::Fire)
         {
             return 2.0f;
         }
-        if (Defender.Type_ == Type::Water)
+        if (Defender.Type_ == Types::Water)
         {
             return 0.5f;
         }
-        if (Defender.Type_ == Type::Grass)
+        if (Defender.Type_ == Types::Grass)
         {
             return 0.5f;
         }
     }
-    if (Type_ == Type::Grass)
+    if (Type_ == Types::Grass)
     {
-        if (Defender.Type_ == Type::Fire)
+        if (Defender.Type_ == Types::Fire)
         {
             return 0.5f;
         }
-        if (Defender.Type_ == Type::Water)
+        if (Defender.Type_ == Types::Water)
         {
             return 2.0f;
         }
-        if (Defender.Type_ == Type::Grass)
+        if (Defender.Type_ == Types::Grass)
         {
             return 0.5f;
         }
@@ -94,7 +84,7 @@ float Type::GetModifier(const Type& Defender) const
     return 1.0f;
 }
 
-Type::Types Type::ToType(const std::string Type) const
+Types Type::ToType(const std::string Type) const
 {
     if (Type == "Normal") return Types::Normal;
     if (Type == "Fire")   return Types::Fire;
